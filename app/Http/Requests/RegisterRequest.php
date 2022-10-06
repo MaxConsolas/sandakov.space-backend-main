@@ -2,9 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
-
 class RegisterRequest extends DefaultFormRequest
 {
 

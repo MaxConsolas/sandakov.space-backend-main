@@ -15,7 +15,7 @@ class RegisterService
      * @param  RegisterRequest $data
      * @return User
      */
-    public static function register(RegisterRequest $data)
+    public static function register(RegisterRequest $data): User
     {
         $user = new User($data->only(['name', 'surname', 'email']));
         $user->roles_id = Roles::whereSlug(Roles::ROLE_DEFAULT_SLUG)->first()->id;
@@ -23,5 +23,38 @@ class RegisterService
         $user->save();
 
         return $user;
+    }
+
+    /**
+     * Confirm email
+     *
+     * @param  RegisterRequest $data
+     * @return
+     */
+    public static function confirm_email($data)
+    {
+       
+    }
+
+    /**
+     * Reset password
+     *
+     * @param  RegisterRequest $data
+     * @return
+     */
+    public static function reset_password($data)
+    {
+      
+    }
+
+    /**
+     * Confirm reset
+     *
+     * @param  RegisterRequest $data
+     * @return
+     */
+    public static function confirm_reset($data)
+    {
+       
     }
 }
