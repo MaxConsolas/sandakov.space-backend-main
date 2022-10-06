@@ -12,10 +12,10 @@ class RegisterService
     /**
      * Register user
      *
-     * @param  RegisterRequest  $data
+     * @param  RegisterRequest $data
      * @return User
      */
-    public function register(RegisterRequest $data)
+    public static function register(RegisterRequest $data)
     {
         $user = new User($data->only(['name', 'surname', 'email']));
         $user->roles_id = Roles::whereSlug(Roles::ROLE_DEFAULT_SLUG)->first()->id;

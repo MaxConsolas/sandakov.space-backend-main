@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\RegisterController;
 use Laravel\Passport\Passport;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('auth')->group(function () {
-    
+Route::prefix('auth')->namespace('auth')->group(function () {
+    Route::post('register', [RegisterController::class, 'register']);
 });
 
-Passport::routes();
+// Passport::routes();

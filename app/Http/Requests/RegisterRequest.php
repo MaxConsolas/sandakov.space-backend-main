@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
 
-class RegisterRequest extends FormRequest
+class RegisterRequest extends DefaultFormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +15,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +26,10 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['string', 'max:30'],
-            'surname' => ['string', 'max:30'],
-            'email' => ['email:rfc,dns', 'max:30', 'unique:users,email'],
-            'password' => ['string', 'max:50', 'confirmed'],
+            'name' => ['string', 'required', 'max:30'],
+            'surname' => ['string', 'required', 'max:30'],
+            'email' => ['email:rfc,dns', 'required', 'max:30', 'unique:users,email'],
+            'password' => ['string', 'required', 'max:50', 'confirmed'],
         ];
     }
 }
