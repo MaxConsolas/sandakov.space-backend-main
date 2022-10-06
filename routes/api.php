@@ -19,4 +19,4 @@ Route::prefix('auth')->namespace('auth')->group(function () {
     Route::post('register', [RegisterController::class, 'register']);
 });
 
-// Passport::routes();
+Passport::routes();
